@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Account } from './_model/account';
 
 @Component({
   selector: 'my-app',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent  {
   name = 'Angular';
+
+  ngOnInit() {
+    let account = new Account('test','');
+
+    console.log(account.getNotesQty(2));
+  }
 }

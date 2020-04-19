@@ -1,22 +1,30 @@
-import { Denomination } from "./denomination";
-import { Currencies } from "../_data/currencies";
+type Currency = {
+  [value: number]: number;
+};
 
 export class Account {
-  public name: string;
-  public code: string;
-  public notes: Denomination[] = [];
-  public coins: Denomination[] = [];
+  public notes: Currency = {};
+  public coins: Currency = {};
 
-  constructor(name: string, code: string) {
-    this.name = name;
-    this.code = code;
+  constructor(public name: string) {}
 
-    Currencies.getNotes(this.code).forEach(v => {
-      this.notes.push(new Denomination(v));
-    });
+  getNotesQty(value: number): number {
+    const qty = this.notes[value];
+    return qty ? qty : 0;
+  }
 
-    Currencies.getCoins(this.code).forEach(v => {
-      this.coins.push(new Denomination(v));
-    });
+  getCoinsQty(value: number): number {
+    const qty = this.coins[value];
+    return qty ? qty : 0;
+  }
+
+  setNotesQty(value: number, qty: number) {
+    if (qty < 0) qty = 0;
+    this.notes[value] = qty;
+  }
+
+  setCoinsQty(value: number, qty: number) {
+    if (qty < 0) qty = 0;
+    this.coins[value] = qty;
   }
 }
