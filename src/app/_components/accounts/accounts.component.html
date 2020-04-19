@@ -1,65 +1,71 @@
 <div class="row">
 	<div class="col-12">
 		<h3>Summary</h3>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Account</th>
-					<th>Total Notes</th>
-					<th>Total Coins</th>
-					<th>Total</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr *ngFor='let account of accountss'>
-					<td>{{account.name}}</td>
-					<td>{{getAccountTotalNotes(account) | async | currency:account.code:'symbol':'0.0'}}</td>
-					<td>{{getAccountTotalCoins(account) | async | currency:account.code:'symbol':'0.0'}}</td>
-					<td>{{getAccountTotal(account) | async | currency:account.code:'symbol':'0.0'}}</td>
-				</tr>
-			</tbody>
-		</table>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Account</th>
+            <th>Total Notes</th>
+            <th>Total Coins</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let account of accountss'>
+            <td>{{account.name}}</td>
+            <td>{{getAccountTotalNotes(account) | async | currency:account.code:'symbol':'0.0'}}</td>
+            <td>{{getAccountTotalCoins(account) | async | currency:account.code:'symbol':'0.0'}}</td>
+            <td>{{getAccountTotal(account) | async | currency:account.code:'symbol':'0.0'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 	</div>
 
 	<div class="col-12">
 		<h3>Notes</h3>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Account</th>
-					<th *ngFor="let n of currencyNotes">{{n}}</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr *ngFor='let account of accounts'>
-					<td>{{account.name}}</td>
-					<td 
-            *ngFor='let n of currencyNotes'
-            (click)="account.incrementNotesQty(n, qtyIncrementAmt)"
-            >{{account.getNotesQty(n)}}</td>
-				</tr>
-			</tbody>
-		</table>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Account</th>
+            <th *ngFor="let n of currencyNotes">{{n}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let account of accounts'>
+            <td>{{account.name}}</td>
+            <td 
+              *ngFor='let n of currencyNotes'
+              (click)="account.incrementNotesQty(n, qtyIncrementAmt)"
+              >{{account.getNotesQty(n)}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 	</div>
 
 	<div class="col-12">
 		<h3>Coins</h3>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Account</th>
-					<th *ngFor="let c of currencyCoins">{{c}}</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr *ngFor='let account of accounts'>
-					<td>{{account.name}}</td>
-					<td
-            *ngFor='let c of currencyCoins'
-            (click)="account.incrementCoinsQty(c, qtyIncrementAmt)"
-            >{{account.getCoinsQty(c)}}</td>
-				</tr>
-			</tbody>
-		</table>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Account</th>
+            <th *ngFor="let c of currencyCoins">{{c}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let account of accounts'>
+            <td>{{account.name}}</td>
+            <td
+              *ngFor='let c of currencyCoins'
+              (click)="account.incrementCoinsQty(c, qtyIncrementAmt)"
+              >{{account.getCoinsQty(c)}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 	</div>
 </div>
