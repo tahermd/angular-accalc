@@ -8,10 +8,4 @@ import { Account } from './_model/account';
 })
 export class AppComponent  {
   name = 'Angular';
-
-  ngOnInit() {
-    let account = new Account('test','');
-
-    console.log(account.getNotesQty(2));
-  }
 }

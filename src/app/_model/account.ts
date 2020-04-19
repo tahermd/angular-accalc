@@ -27,4 +27,14 @@ export class Account {
     if (qty < 0) qty = 0;
     this.coins[value] = qty;
   }
+
+  incrementNotesQty(value: number, incrementAmt: number) {
+    let newQty = this.getNotesQty(value) + incrementAmt;
+    this.setNotesQty(value, newQty);
+  }
+
+  incrementCoinsQty(value: number, incrementAmt: number) {
+    let newQty = this.getCoinsQty(value) + incrementAmt;
+    this.setCoinsQty(value, newQty);
+  }
 }
