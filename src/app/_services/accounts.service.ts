@@ -7,7 +7,7 @@ export class AccountsService {
   accountType: string = "INR";
   private _accounts: Account[];
 
-  qtyIncrementAmt = new BehaviorSubject(1);
+  qtyIncrementAmt = new BehaviorSubject(0);
 
   constructor() {}
 

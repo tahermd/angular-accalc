@@ -1,0 +1,31 @@
+<div class="row">
+	<div class="col-12">
+    <h3>Increment Amount:
+      <span class="badge badge-pill badge-dark">{{incrementAmt}}</span>
+    </h3>
+		<div class="btn-toolbar">
+			<div class="btn-group">
+				<button
+          type="button"
+          class="btn btn-info"
+          *ngFor="let v of buttons.group1"
+          [class.active]="v == incrementAmt"
+          >
+          {{v}}
+        </button>
+			</div>
+      <div class="w-100"></div>
+			<div class="btn-group">
+				<button
+          type="button"
+          class="btn btn-info"
+          *ngFor="let v of buttons.group2"
+          [class.active]="v == incrementAmt"
+          (click)=setIncrementAmt(v)
+          >
+          {{v}}
+        </button>
+			</div>
+		</div>
+	</div>
+</div>

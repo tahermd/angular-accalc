@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Currencies } from "../../_data/currencies";
 import { AccountsService } from "../../_services/accounts.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-accounts",
@@ -14,7 +15,7 @@ export class AccountsComponent implements OnInit, OnDestroy {
 
   qtyIncrementAmt: number;
 
-  private sub1;
+  private sub1: Subscription;
 
   constructor(private accountsService: AccountsService) {
     let accountType = accountsService.accountType;

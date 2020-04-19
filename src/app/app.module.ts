@@ -7,12 +7,14 @@ import { HelloComponent } from './hello.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AccountsComponent } from './_components/accounts/accounts.component';
 import { AccountsService } from './_services/accounts.service';
+import { IncrementerComponent } from './_components/incrementer/incrementer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloComponent,
     AccountsComponent,
+    IncrementerComponent,
   ],
   imports: [
     AppRoutingModule,
