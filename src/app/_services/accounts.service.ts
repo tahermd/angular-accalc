@@ -20,8 +20,11 @@ export class AccountsService {
     return this._accounts;
   }
 
-  getAccountTotalNotes(account: Account): Observable<number> {
-    let notes = Currencies.getNotes(this.accountType);
+  getAccountTotalNotes(
+    account: Account,
+    currencyCode: SupportedCurrencies
+  ): Observable<number> {
+    let notes = Currencies.getNotes(currencyCode);
 
     return from(notes).pipe(
       map(v => account.getNotesQty(v) * v),
@@ -29,8 +32,11 @@ export class AccountsService {
     );
   }
 
-  getAccountTotalCoins(account: Account): Observable<number> {
-    let coins = Currencies.getCoins(this.accountType);
+  getAccountTotalCoins(
+    account: Account,
+    currencyCode: SupportedCurrencies
+  ): Observable<number> {
+    let coins = Currencies.getCoins(currencyCode);
 
     return from(coins).pipe(
       map(v => account.getCoinsQty(v) * v),
@@ -38,10 +44,10 @@ export class AccountsService {
     );
   }
 
-  getAccountTotal(account: Account): Observable<number> {
+  getAccountTotal(account: Account, currencyCode: SupportedCurrencies): Observable<number> {
     return zip(
-      this.getAccountTotalNotes(account),
-      this.getAccountTotalCoins(account)
+      this.getAccountTotalNotes(account, currencyCode),
+      this.getAccountTotalCoins(account, currencyCode)
     ).pipe(map(([nt, nc]) => nt + nc));
   }
 }

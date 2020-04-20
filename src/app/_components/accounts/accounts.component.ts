@@ -38,14 +38,14 @@ export class AccountsComponent implements OnInit, OnDestroy {
   }
 
   getAccountTotalNotes(account: Account): Observable<number> {
-    return this.accountsService.getAccountTotalNotes(account);
+    return this.accountsService.getAccountTotalNotes(account, this.currencyCode);
   }
 
   getAccountTotalCoins(account: Account): Observable<number> {
-    return this.accountsService.getAccountTotalCoins(account);
+    return this.accountsService.getAccountTotalCoins(account, this.currencyCode);
   }
 
   getAccountTotal(account: Account): Observable<number> {
-    return this.accountsService.getAccountTotal(account);
+    return this.accountsService.getAccountTotal(account, this.currencyCode);
   }
 }
