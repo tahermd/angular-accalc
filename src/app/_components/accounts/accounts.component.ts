@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Currencies } from "../../_data/currencies";
+import { Currencies, SupportedCurrencies } from "../../_data/currencies";
 import { AccountsService } from "../../_services/accounts.service";
 import { Subscription, Observable } from "rxjs";
 import { Account } from "../../_model/account";
@@ -13,7 +13,7 @@ export class AccountsComponent implements OnInit, OnDestroy {
   readonly currencyNotes;
   readonly currencyCoins;
   accounts: Account[];
-  currencyCode: string;
+  currencyCode: SupportedCurrencies;
 
   qtyIncrementAmt: number;
 

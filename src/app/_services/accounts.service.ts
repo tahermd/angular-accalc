@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
 import { Account } from "../_model/account";
 import { BehaviorSubject, from, Observable, zip } from "rxjs";
-import { Currencies } from "../_data/currencies";
+import { Currencies, SupportedCurrencies } from "../_data/currencies";
 import { map, reduce } from "rxjs/operators";
 
 @Injectable()
 export class AccountsService {
-  accountType: string = "INR";
+  accountType: SupportedCurrencies = SupportedCurrencies.INR;
   private _accounts: Account[];
 
   qtyIncrementAmt = new BehaviorSubject(1);
