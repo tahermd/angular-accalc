@@ -1,7 +1,10 @@
 <app-incrementer></app-incrementer>
 <div class="row">
 	<div class="col-12">
-		<h3>Summary</h3>
+		<h3>
+      Summary
+      <span class="badge badge-pill badge-dark">{{getTotal() | async}}</span>
+    </h3>
     <div class="table-responsive">
       <table class="table">
         <thead>
@@ -25,7 +28,10 @@
 	</div>
 
 	<div class="col-12">
-		<h3>Notes</h3>
+		<h3>
+      Notes
+      <span class="badge badge-pill badge-dark">{{getTotalNotes() | async}}</span>
+    </h3>
     <div class="table-responsive">
       <table class="table">
         <thead>
@@ -48,7 +54,10 @@
 	</div>
 
 	<div class="col-12">
-		<h3>Coins</h3>
+		<h3>
+      Coins
+      <span class="badge badge-pill badge-dark">{{getTotalCoins() | async}}</span>
+    </h3>
     <div class="table-responsive">
       <table class="table">
         <thead>

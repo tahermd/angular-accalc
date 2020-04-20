@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Account } from "../_model/account";
 import { BehaviorSubject, from, Observable, zip } from "rxjs";
 import { Currencies, SupportedCurrencies } from "../_data/currencies";
-import { map, reduce } from "rxjs/operators";
+import { map, reduce, mergeMap } from "rxjs/operators";
 
 @Injectable()
 export class AccountsService {
@@ -52,5 +52,35 @@ export class AccountsService {
       this.getAccountTotalNotes(account, currencyCode),
       this.getAccountTotalCoins(account, currencyCode)
     ).pipe(map(([nt, nc]) => nt + nc));
+  }
+
+  getTotalNotes(
+    accounts: Account[],
+    currencyCode: SupportedCurrencies
+  ): Observable<number> {
+    return from(accounts).pipe(
+      mergeMap(acc => this.getAccountTotalNotes(acc, currencyCode)),
+      reduce((total, sum) => total + sum, 0)
+    );
+  }
+
+  getTotalCoins(
+    accounts: Account[],
+    currencyCode: SupportedCurrencies
+  ): Observable<number> {
+    return from(accounts).pipe(
+      mergeMap(acc => this.getAccountTotalCoins(acc, currencyCode)),
+      reduce((total, sum) => total + sum, 0)
+    );
+  }
+
+  getTotal(
+    accounts: Account[],
+    currencyCode: SupportedCurrencies
+  ): Observable<number> {
+    return from(accounts).pipe(
+      mergeMap(acc => this.getAccountTotal(acc, currencyCode)),
+      reduce((total, sum) => total + sum, 0)
+    );
   }
 }
