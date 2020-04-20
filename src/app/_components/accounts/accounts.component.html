@@ -13,11 +13,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor='let account of accountss'>
+          <tr *ngFor='let account of accounts'>
             <td>{{account.name}}</td>
-            <td>{{getAccountTotalNotes(account) | async | currency:account.code:'symbol':'0.0'}}</td>
-            <td>{{getAccountTotalCoins(account) | async | currency:account.code:'symbol':'0.0'}}</td>
-            <td>{{getAccountTotal(account) | async | currency:account.code:'symbol':'0.0'}}</td>
+            <td>{{getAccountTotalNotes(account) | async | currency:currencyCode:'symbol':'0.0'}}</td>
+            <td>{{getAccountTotalCoins(account) | async | currency:currencyCode:'symbol':'0.0'}}</td>
+            <td>{{getAccountTotal(account) | async | currency:currencyCode:'symbol':'0.0'}}</td>
           </tr>
         </tbody>
       </table>

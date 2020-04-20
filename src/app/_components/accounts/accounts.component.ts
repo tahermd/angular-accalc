@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Currencies } from "../../_data/currencies";
 import { AccountsService } from "../../_services/accounts.service";
-import { Subscription } from "rxjs";
+import { Subscription, Observable } from "rxjs";
 import { Account } from "../../_model/account";
 
 @Component({
@@ -13,16 +13,17 @@ export class AccountsComponent implements OnInit, OnDestroy {
   readonly currencyNotes;
   readonly currencyCoins;
   accounts: Account[];
+  currencyCode: string;
 
   qtyIncrementAmt: number;
 
   private sub1: Subscription;
 
   constructor(private accountsService: AccountsService) {
-    let accountType = accountsService.accountType;
+    this.currencyCode = accountsService.accountType;
 
-    this.currencyNotes = Currencies.getNotes("INR");
-    this.currencyCoins = Currencies.getCoins("INR");
+    this.currencyNotes = Currencies.getNotes(this.currencyCode);
+    this.currencyCoins = Currencies.getCoins(this.currencyCode);
   }
 
   ngOnInit() {
@@ -34,5 +35,17 @@ export class AccountsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub1.unsubscribe();
+  }
+
+  getAccountTotalNotes(account: Account): Observable<number> {
+    return this.accountsService.getAccountTotalNotes(account);
+  }
+
+  getAccountTotalCoins(account: Account): Observable<number> {
+    return this.accountsService.getAccountTotalCoins(account);
+  }
+
+  getAccountTotal(account: Account): Observable<number> {
+    return this.accountsService.getAccountTotal(account);
   }
 }
