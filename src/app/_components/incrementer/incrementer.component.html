@@ -10,6 +10,7 @@
           class="btn btn-info"
           *ngFor="let v of buttons.group1"
           [class.active]="v == incrementAmt"
+          (click)=setIncrementAmt(v)
           >
           {{v}}
         </button>
