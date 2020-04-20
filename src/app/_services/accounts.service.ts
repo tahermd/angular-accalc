@@ -44,7 +44,10 @@ export class AccountsService {
     );
   }
 
-  getAccountTotal(account: Account, currencyCode: SupportedCurrencies): Observable<number> {
+  getAccountTotal(
+    account: Account,
+    currencyCode: SupportedCurrencies
+  ): Observable<number> {
     return zip(
       this.getAccountTotalNotes(account, currencyCode),
       this.getAccountTotalCoins(account, currencyCode)
