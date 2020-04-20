@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Currencies } from "../../_data/currencies";
 import { AccountsService } from "../../_services/accounts.service";
 import { Subscription } from "rxjs";
+import { Account } from "../../_model/account";
 
 @Component({
   selector: "app-accounts",
